@@ -1,0 +1,77 @@
+<div class="bottom-sheet-outer-container">
+    <div class="bottom-sheet-header-container">
+        <div class="bottom-sheet-heading">Create new assessment</div>
+        <div class="header-closing-icon" (click)="toggleBottomSheet()">
+            <img src="../../../assets/images/cut_web.svg">
+        </div>
+    </div>
+    <div class="bottom-sheet-body">
+        <div class="input-div">
+            <div class="input-label-container">
+                <div class="input-label">Name of assessment</div>
+            </div>
+            <div class="input-container">
+                <div class="input-inner-container">
+                    <input type="text" class="custom-input" placeholder="Type Here"/>
+                </div>
+            </div>
+        </div>
+        <div class="input-div">
+            <div class="input-label-container">
+                <div class="input-label">Purpose of the test is</div>
+            </div>
+            <div class="select-input-container">
+                <div class="input-inner-container">
+                    <input type="text" class="custom-input" placeholder="Select"/>
+                </div>
+                <div class="select-icon">
+                    <img src="../../../assets/images/keyboard_arrow_down.svg">
+                </div>
+            </div>
+        </div>
+        <div class="input-div">
+            <div class="input-label-container">
+                <div class="input-label">Description</div>
+            </div>
+            <div class="select-input-container">
+                <input type="text" class="custom-input" placeholder="Select"/>
+                <div class="select-icon">
+                    <img src="../../../assets/images/keyboard_arrow_down.svg">
+                </div>
+            </div>
+        </div>
+        <div class="skills-container">
+            <div class="input-label-container">
+                <div class="input-label">Skills</div>
+            </div>
+            <div class="skills-label-container">
+                <div class="skill-tag-list">
+                    <div class="skill-tag-container" *ngFor="let tag of tags;">
+                        <div class="skill-tag-inner-container">
+                            <div class="skill-tag-text">{{tag}}</div>
+                            <div class="skill-close-icon">
+                                <img src="../../../assets/images/close.svg">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-skills">
+                    <input type="text" class="custom-input" placeholder="Type here"/>
+                </div>
+            </div>
+        </div>
+        <div class="input-div">
+            <div class="input-label-container">
+                <div class="input-label">Duration of assessment</div>
+            </div>
+            <div class="select-input-container">
+                <input type="text" class="time-input" placeholder="HH:MM:SS"/>
+            </div>
+        </div>
+    </div>
+    <div class="bottom-sheet-footer">
+        <div role="button" class="save-button">
+            <div class="save-button-text">Save</div>
+        </div>
+    </div>
+  </div>

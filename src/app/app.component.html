@@ -1,0 +1,369 @@
+<div class="outermost-dashboard">
+  <div class="mobile-hide" style="width: 156px;">
+    <div class="side-menu">
+      <div class="side-menu-inner-container">
+        <div class="upper-side-menu">
+          <div class="side-menu-item-container">
+            <div>
+              <img src="../assets/images/dashboard.svg">
+            </div>
+            <div class="side-menu-item-text">Dashboard</div>
+          </div>
+          <div class="side-menu-item-container-selected">
+            <div>
+              <img src="../assets/images/note_alt.svg">
+            </div>
+            <div class="side-menu-item-text-selected">Assessment</div>
+          </div>
+          <div class="side-menu-item-container">
+            <div>
+              <img src="../assets/images/quiz.svg">
+            </div>
+            <div class="side-menu-item-text">My Library</div>
+          </div>
+        </div>
+        <div class="admin-container">
+          <div class="horizontal-line"></div>
+          <div class="admin-inner-container">
+            <div class="admin-button">Admin</div>
+            <div class="admin-img-container">
+              <div>
+                <img src="../assets/images/admin_meds.svg">
+              </div>
+              <div class="side-menu-item-text">Round<br />Status</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="main-container">
+    <div class="mobile-header web-hide">
+      <div style="justify-content: flex-start; align-items: center; gap: 10px; display: flex">
+        <div style="width: 40px; height: 40px; padding: 10px; background: #F2F8FE; border-radius: 60px; justify-content: center; align-items: center; gap: 10px; display: flex" role="button" (click)="toggleMobileMenu()">
+          <img src="../assets/images/segment.svg">
+        </div>
+        <div style="color: #1C4980; font-size: 16px; font-family: Inter; font-weight: 600; line-height: 22.40px; word-wrap: break-word">Assessment</div>
+      </div>
+    </div>
+    <div class="outer-nav-bar">
+      <div class="nav-buttons-list">
+        <div class="nav-buttons-conatiner">
+          <div class="nav-item-text">Assessment</div>
+          <div class="vertical-line"></div>
+          <div class="selected-nav-item-container">
+            <div class="selected-nav-item">
+              <div class="selected-nav-item-text">My Assessments</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="outer-nav-bar-mobile">
+      <div class="mobile-selected-header-container">
+          <div class="mobile-selected-header">My Assessments</div>
+      </div>
+      <div class="mobile-unselected-header-container">
+          <div class="mobile-unselected-header">Unstop Assessments</div>
+      </div>
+    </div>
+    <div class="inner-main-container">
+      <div style="align-self: stretch; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 40px; display: flex">
+        <div style="align-self: stretch; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 24px; display: flex">
+          <div class="stats-outer-container" [ngClass]="{'mobile-stats-animation': !showStats}">
+            <div class="assessment-heading mobile-hide">Assessments Overview</div>
+            <div style="width: 100%;">
+              <div class="web-stats">
+                <div class="border-right">
+                  <ng-container *ngTemplateOutlet="totalAssesment"></ng-container>
+                </div>
+                <div class="border-right">
+                  <ng-container *ngTemplateOutlet="candidates"></ng-container>
+                </div>
+                <div class="border-right">
+                  <ng-container *ngTemplateOutlet="candidateSource"></ng-container>
+                </div>
+                <ng-container *ngTemplateOutlet="totalPurpose"></ng-container>
+              </div>
+              <div class="mobile-stats">
+                <div class="d-flex">
+                  <div class="col-6 border-right">
+                    <ng-container *ngTemplateOutlet="totalAssesment"></ng-container>
+                  </div>
+                  <div class="col-6">
+                    <ng-container *ngTemplateOutlet="totalPurpose"></ng-container>
+                  </div>
+                </div>
+                <div class="border-top">
+                  <ng-container *ngTemplateOutlet="candidates"></ng-container>
+                </div>
+                <div class="border-top">
+                  <ng-container *ngTemplateOutlet="candidateSource"></ng-container>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 16px; display: flex; width: 100%;">
+            <div style="width: 100%; justify-content: space-between; align-items: flex-end; gap: 10px; display: inline-flex">
+              <div class="assessment-heading" style="width: 100%; display: flex; justify-content: space-between; align-items: center;">
+                <span>My Assessment</span>
+                <div class="my-assessment-icons-container">
+                  <div class="my-assessment-icon-container">
+                    <div>
+                      <img src="../assets/images/search.svg">
+                    </div>
+                  </div>
+                  <div class="my-assessment-icon-container">
+                    <div>
+                      <img src="../assets/images/filter_list_alt.svg">
+                    </div>
+                  </div>
+                  <div class="my-assessment-icon-container" role="button" (click)="toggleStats()">
+                    <div>
+                      <img [ngStyle]="{ 'display': showStats ? 'none' : 'block' }" src="../assets/images/bar_chart.svg">
+                      <img [ngStyle]="{ 'display': !showStats ? 'none' : 'block' }" src="../assets/images/bar_chart_blue.svg">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="grid-outer-container">
+              <div class="grid-container">
+                <div class="add-assessment-container" (click)="toggleBottomSheet()">
+                  <div class="add-assessment-inner-container">
+                    <div class="add-img-container">
+                      <div class="add-img">
+                        <img src="../assets/images/add.svg">
+                      </div>
+                    </div>
+                    <div class="add-assessment-haeding">New Assessment</div>
+                  </div>
+                  <div class="add-assessment-sub-heading">From here you can add questions of multiple types like MCQs,
+                    subjective (text or paragraph)!</div>
+                </div>
+                <div *ngFor="let assessment of assessments; let i = index;">
+                  <div class="assessment-container">
+                    <div class="assessment-top-container">
+                      <div class="assessment-top-inner-container">
+                        <div class="logo-container">
+                          <img [src]="assessment.logo">
+                        </div>
+                        <div class="heading-container">
+                          <div class="assessment-heading">{{assessment.title}}</div>
+                          <div class="sub-heading-container">
+                            <div class="assessment-sub-heading">{{assessment.subTitle}}</div>
+                            <div class="assessment-vertical-line"></div>
+                            <div class="date-container">
+                              <div class="calender-img">
+                                <img src="../assets/images/calendar_today.svg">
+                              </div>
+                              <div class="assessment-date">{{assessment.date}}</div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="three-dots">
+                        <img src="../assets/images/three_dots.svg">
+                      </div>
+                    </div>
+                    <div class="horizontal-line"></div>
+                    <div class="bottom-assessment-container">
+                      <div class="duration-question-container">
+                        <div class="duration-container">
+                          <div class="duration-time">{{assessment.duration}}</div>
+                          <div class="duration-text">Duration</div>
+                        </div>
+                        <div class="duration-container">
+                          <div class="duration-time">{{assessment.questionCount}}</div>
+                          <div class="duration-text">Questions</div>
+                        </div>
+                      </div>
+                      <div class="share-assessment-container">
+                        <div class="share-button">
+                          <div class="share-logo-container">
+                            <img src="../assets/images/link.svg">
+                          </div>
+                          <div class="share-button-text">Share</div>
+                        </div>
+                        <div class="share-people-container">
+                          <div style="display: flex; align-items: center;">
+                            <div *ngIf="assessment.shareList.length > 0" class="share-people-icon-1">
+                              {{assessment.shareList[0]}}</div>
+                            <div *ngIf="assessment.shareList.length > 1" class="share-people-icon-2">
+                              {{assessment.shareList[1]}}</div>
+                            <div *ngIf="assessment.shareList.length > 2" class="share-people-icon-3">
+                              {{assessment.shareList[2]}}</div>
+                          </div>
+                        </div>
+                        <div *ngIf="assessment.shareList.length>3" class="share-people-count">{{getSharePeopleCount(i)}}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="bottom-sheet" [ngClass]="{'open': isBottomSheetOpen}">
+  <div class="sheet-content">
+    <bottom-sheet (toggleEvent)="toggleBottomSheet()"></bottom-sheet>
+  </div>
+</div>
+
+<div *ngIf="isMobileMenuOpen" class="background-animation">
+</div>
+
+<div class="side-menu-mobile-container" [ngClass]="{'side-menu-mobile-open': isMobileMenuOpen}">
+  <div class="side-menu-mobile">
+    <div style="width: 100%; height: 100%; padding-top: 40px; padding-bottom: 10px; padding-left: 20px; padding-right: 20px; background: #F2F8FE; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 10px; display: inline-flex">
+      <div style="align-self: stretch; height: 204px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 6px; display: flex">
+          <div style="align-self: stretch; height: 36px; justify-content: space-between; align-items: flex-start; gap: 10px; display: inline-flex">
+              <div style="color: #1C4980; font-size: 14px; font-family: Inter; font-weight: 500; line-height: 19.60px; word-wrap: break-word">Menu</div>
+              <div style="width: 24px; height: 24px; position: relative" role="button" (click)="toggleMobileMenu()">
+                <img src="../assets/images/cut_menu.svg">
+              </div>
+          </div>
+          <div style="align-self: stretch; height: 50px; padding: 10px; background: #F2F8FE; border-radius: 8px; justify-content: flex-start; align-items: center; gap: 10px; display: inline-flex">
+              <div class="mobile-side-menu-tab">
+                  <div>
+                    <img src="../assets/images/dashboard.svg">
+                  </div>
+                  <div style="color: #1C4980; font-size: 14px; font-family: Inter; font-weight: 500; line-height: 19.60px; word-wrap: break-word">Dashboard</div>
+              </div>
+          </div>
+          <div style="align-self: stretch; height: 50px; padding: 10px; background: #E5F1FC; border-radius: 8px; border: 0.50px #0073E6 solid; justify-content: flex-start; align-items: center; gap: 10px; display: inline-flex">
+              <div class="mobile-side-menu-tab">
+                  <div>
+                    <img src="../assets/images/note_alt.svg">
+                  </div>
+                  <div style="color: #0073E6; font-size: 14px; font-family: Inter; font-weight: 600; line-height: 19.60px; word-wrap: break-word">Assessment</div>
+              </div>
+              <div style="width: 7px; height: 7px; opacity: 0; background: #D63500; border-radius: 10px"></div>
+          </div>
+          <div style="align-self: stretch; height: 50px; padding: 10px; background: #F2F8FE; border-radius: 8px; justify-content: flex-start; align-items: center; gap: 10px; display: inline-flex">
+              <div class="mobile-side-menu-tab">
+                  <div>
+                    <img src="../assets/images/quiz.svg">
+                  </div>
+                  <div style="color: #1C4980; font-size: 14px; font-family: Inter; font-weight: 500; line-height: 19.60px; word-wrap: break-word">My Library</div>
+              </div>
+          </div>
+      </div>
+      <div style="align-self: stretch; height: 0px; border: 0.50px #BACBD5 dotted"></div>
+      <div style="align-self: stretch; height: 50px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 6px; display: flex">
+          <div style="align-self: stretch; height: 50px; padding: 10px; background: #F2F8FE; border-radius: 8px; justify-content: space-between; align-items: center; gap: 10px; display: inline-flex">
+              <div class="mobile-side-menu-tab">
+                  <div>
+                    <img src="../assets/images/admin_meds.svg">
+                  </div>
+                  <div style="color: #1C4980; font-size: 14px; font-family: Inter; font-weight: 500; line-height: 19.60px; word-wrap: break-word">Round Status</div>
+              </div>
+              <div class="admin-button">Admin</div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #totalAssesment>
+  <div class="subSection">
+    <div class="sub-section">
+      <div class="sub-section-text">Total Assessment</div>
+      <div class="sub-section-icon-outer-container-1">
+        <div class="sub-section-icon-container">
+          <div class="m-auto">
+            <img src="../assets/images/view_agenda.svg">
+          </div>
+        </div>
+        <div class="sub-section-large-num">34</div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+<ng-template #candidates>
+  <div class="subSection">
+    <div class="sub-section" style="flex: 1 1 0">
+      <div class="sub-section-text"> Candidates</div>
+      <div class="sub-section-icon-outer-container-2">
+        <div class="sub-section-icon-container">
+          <div class="m-auto">
+            <img src="../assets/images/candidates.svg">
+          </div>
+        </div>
+        <div class="sub-section-stats">
+          <div class="sub-section-num">
+            <div class="sub-section-large-num">11,145</div>
+            <div class="sub-section-small-num">+89</div>
+          </div>
+          <div class="sub-section-small-text">Total Candidate</div>
+        </div>
+        <div class="sub-section-innner-line"></div>
+        <div class="sub-section-stats">
+          <div class="sub-section-num">
+            <div class="sub-section-large-num">1,14</div>
+            <div class="sub-section-small-num">+89</div>
+          </div>
+          <div class="sub-section-small-text">Who Attamped</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+<ng-template #candidateSource>
+  <div class="subSection">
+    <div class="sub-section">
+      <div class="sub-section-text">Candidates Source</div>
+      <div class="sub-section-icon-outer-container-3">
+        <div class="sub-section-icon-container">
+          <div class="m-auto">
+            <img src="../assets/images/candidates_source.svg">
+          </div>
+        </div>
+        <div class="sub-section-stats">
+          <div class="sub-section-num">
+            <div class="sub-section-large-num">11,000</div>
+            <div class="sub-section-small-num">+89</div>
+          </div>
+          <div class="sub-section-small-text">E-mail</div>
+        </div>
+        <div class="sub-section-innner-line"></div>
+        <div class="sub-section-stats">
+          <div class="sub-section-num">
+            <div class="sub-section-large-num">145</div>
+            <div class="sub-section-small-num">+89</div>
+          </div>
+          <div class="sub-section-small-text">Social Share</div>
+        </div>
+        <div class="sub-section-innner-line"></div>
+        <div class="sub-section-stats">
+          <div class="sub-section-num">
+            <div class="sub-section-large-num">145</div>
+            <div class="sub-section-small-num">+89</div>
+          </div>
+          <div class="sub-section-small-text">Unique Link</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+<ng-template #totalPurpose>
+  <div class="subSection">
+    <div class="sub-section">
+      <div class="sub-section-text">Total Purpose</div>
+      <div class="sub-section-icon-outer-container-1">
+        <div class="sub-section-icon-container">
+          <div class="m-auto">
+            <img src="../assets/images/total_purpose.svg">
+          </div>
+        </div>
+        <div class="sub-section-large-num">11</div>
+      </div>
+    </div>
+  </div>
+</ng-template>
